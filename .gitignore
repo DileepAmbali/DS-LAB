@@ -12,3 +12,6 @@
 /Q.exe
 /sparse.exe
 /tuple.exe
+
+*.exe
+*.txt
