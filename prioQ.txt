@@ -1,0 +1,65 @@
+Algorithm
+
+Priority Queue Operations
+Display Menu
+1.Insert 
+2.Delete 
+3.Display
+4.Quit
+
+declare global variable MAX=100, and rear=-1
+declare global 2D integer array prioQ[MAX][2]
+
+insert()
+
+procedure insert: val, priority
+1.Start
+2.if rear = MAX-1
+    print Queue overflow
+  else
+    rear ++
+    prioQ[rear][0] = val
+    prioQ[rear][1] = priority
+  end if
+3.end procedure
+
+
+delete()
+
+procedure delete:
+1.Start
+2.if rear = -1
+    print Queue is empty
+  else 
+    declare int variable i=0, prioComp = prioQ[0][0] and ptr = 0
+
+    repeat until i <= rear
+        if prioQ[i][1] > prioComp
+            ptr = i
+        i= i+1
+    end loop
+
+    i = ptr
+    repeat until i < rear
+        prioQ[i][0] = prioQ[i + 1][0]
+		prioQ[i][1] = prioQ[i + 1][1]
+        i = i+1
+    end loop
+    rear = rear -1
+  end if
+3. print element deleted
+4.end procedure
+
+
+display()
+procedure display:
+1.Start
+2.declare int i =0
+3.if rear = -1
+    print Queue is empty
+  else 
+    repeat until i <= rear
+        print prioQ[i][0] and prioQ[i][1]
+    end loop
+  end if
+4.end procedure

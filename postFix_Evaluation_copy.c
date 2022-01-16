@@ -13,3 +13,8 @@ void push(char item)
         printf("Stack overflow!");
     }
 }
+
+int main()
+{
+    return 0;
+}
