@@ -73,19 +73,33 @@ bool insertSpot(int value, int neighbourVal)
 
 bool delete (int value)
 {
-    struct dllnode *temp = front;
+    struct dllnode *temp1 = front;
     struct dllnode *temp2 = NULL;
-    while (temp != NULL)
+    while (temp1 != NULL)
     {
-        if (temp->data == value)
+        if (temp1->data == value)
         {
-            temp2 = temp->prev;
-            temp = temp->next;
-            temp2->next = temp;
-            temp->prev = temp2;
+            temp2 = temp1->prev;
+            temp1 = temp1->next;
+            if (temp1 == NULL && temp2 == NULL)
+            {
+            }
+            else if (temp1 == NULL)
+            {
+                temp2->next = NULL;
+            }
+            else if (temp2 = NULL)
+            {
+                temp1->prev = NULL;
+            }
+            else
+            {
+                temp1->prev = temp2;
+                temp2->next = temp1;
+            }
             return true;
         }
-        temp = temp->next;
+        temp1 = temp1->next;
     }
     return false;
 }
@@ -171,7 +185,7 @@ void menu()
         scanf("%d", &value);
         if (delete (value))
         {
-            printf("The node %d was deleted!");
+            printf("The node %d was deleted!", value);
         }
         else
         {
