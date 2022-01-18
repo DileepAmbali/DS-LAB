@@ -1,19 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct
+struct list_node
 {
     int data;
     struct list_node *link;
+};
 
-} list_node;
+struct list_node *first = NULL;
 
-list_node *first = NULL;
-
-list_node *createNode(int value)
+struct list_node *createNode(int value)
 {
-    list_node *node;
-    node = (list_node *)malloc(sizeof(list_node));
+    struct list_node *node;
+    node = (struct list_node *)malloc(sizeof(struct list_node));
     node->data = value;
     node->link = NULL;
     return node;
@@ -21,7 +20,7 @@ list_node *createNode(int value)
 
 void insert(int value)
 {
-    list_node *node = createNode(value);
+    struct list_node *node = createNode(value);
     if (first == NULL)
     {
         first = node;
@@ -29,7 +28,7 @@ void insert(int value)
     }
     else
     {
-        list_node *temp = first;
+        struct list_node *temp = first;
         while (temp->link != NULL)
         {
             temp = temp->link;
@@ -46,9 +45,9 @@ void reverse()
         return;
     }
 
-    list_node *temp1 = NULL;
-    list_node *temp2 = first;
-    list_node *temp3 = NULL;
+    struct list_node *temp1 = NULL;
+    struct list_node *temp2 = first;
+    struct list_node *temp3 = NULL;
 
     while (temp2 != NULL)
     {
@@ -62,12 +61,14 @@ void reverse()
 
 void printList()
 {
-    list_node *temp = first;
+    struct list_node *temp = first;
+    printf("\nList: ");
     while (temp != NULL)
     {
-        printf("%d  ", temp->data);
+        printf("%d -> ", temp->data);
         temp = temp->link;
     }
+    printf(" NULL");
 }
 
 int main()
@@ -76,8 +77,10 @@ int main()
     insert(2);
     insert(3);
     insert(4);
+    printf("\nInitial Linked list");
     printList();
-    reverse();
+    printf("\n\nAfter reversal");
+    reverse(); // Reversing the given linked list
     printList();
 
     return 0;
