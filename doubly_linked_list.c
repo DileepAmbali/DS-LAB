@@ -62,6 +62,11 @@ bool insertSpot(int value, int neighbourVal)
             node->next = temp->next;
             temp->next = node;
             node->prev = temp;
+            if (node->next == NULL)
+            {
+                rear = node;
+                break;
+            }
             temp = node->next;
             temp->prev = node;
             return true;
@@ -108,7 +113,7 @@ void printList()
 {
     if (isEmpty())
     {
-        printf("List Empty\n");
+        printf("\nList Empty\n");
         return;
     }
     struct dllnode *temp = front;
@@ -148,9 +153,9 @@ void menu()
             scanf("%d", &choice);
             switch (choice)
             {
-            case -1:
+            case 1:
                 insertRear(value);
-                printf("The node \"%d\" was successfuly added at the rear", value);
+                printf("\nThe node \"%d\" was successfuly added at the rear", value);
                 break;
             case 0:
                 printList();
@@ -158,19 +163,20 @@ void menu()
                 scanf("%d", &spot);
                 if (insertSpot(value, spot))
                 {
-                    printf("The node \"%d\" was successfuly added after node \"%d\"", value, spot);
+                    printf("\nThe node \"%d\" was successfuly added after node \"%d\"", value, spot);
                 }
                 else
                 {
-                    printf("The node was not added to the list! \"%d\" could not be found!", spot);
+                    printf("\nThe node was not added to the list! \"%d\" could not be found!", spot);
                 }
-            case 1:
+                break;
+            case -1:
                 insertFront(value);
-                printf("The node \"%d\" was added at the front", value);
+                printf("\nThe node \"%d\" was added at the front", value);
                 break;
 
             default:
-                printf("Illegal Choice!");
+                printf("\nIllegal Choice!");
             }
         }
         printList();
