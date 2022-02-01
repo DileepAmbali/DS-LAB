@@ -1,0 +1,51 @@
+Algorithm
+
+Operations on stack
+1.  Push element    
+2.  Pop element
+3.  Display stack
+
+define struct polyNode with 2 members: int "data", self referential pointer "link"
+
+declare a polyNode variable pinters top initialised to NULL
+
+
+procedure display
+1.  Start
+2.  if top = NULL 
+        print "The stack is empty"
+    else
+        declare a new pointer of type struct node: temp
+        temp = top
+        Loop while temp is not NULL
+            print temp->data
+            temp = temp->link
+        End loop
+    End if
+3. End procedure
+
+procedure push
+1.  Start
+2.  declare int variable temp
+3.  Read data from user
+4.  create a new node with data entered
+5.  if top = NULL
+        top = node
+    else
+        node->link = top
+        top = node;
+    end if
+6. display list
+7.  End procedure
+
+
+procedure pop
+1.  Start
+2.  if top = NULL
+        print "No items delted"
+    else
+        top = top->link
+3.  display list
+4.  End procedure
+
+

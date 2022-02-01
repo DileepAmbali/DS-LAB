@@ -1,0 +1,62 @@
+Sorting linked list 
+
+Operation on linked list
+1.Add elements to list
+2.Sort list
+3.Display current list
+
+
+define struct listNode
+	number data
+	self pointer link
+	
+	
+define global pointer variables front=NULL,rear=NULL and temp of type 'listNode'
+
+
+procedure add: val
+1.Start
+2.declere a variable node of type listNode;3.node = createNode(val)
+4.if front is NULL
+	1.set front = node
+	2.set rear = node
+5.else
+	1.set rear->link = node
+	2.set rear = node
+6.end if
+7.end procedure
+
+
+procedure sort
+1.Start
+2.declare pointer variable itt of type listNode
+3.declare pointer variable big of type listNode
+4.set big = front
+5.declare number variable temp
+6.while big is NOT NULL
+	1.set itt = big->link
+	2.while itt is NOT NULL
+		1.if itt->data > big->data
+			1.set temp = itt->data
+			2.set itt->data = big->data
+			3.set big->data = temp
+		2.end if
+		3.set itt = itt->link
+	4.end loop
+	5.set big = big->link
+8.end loop
+9.end procedure
+
+
+procedure Display
+1.Start
+2.declare pointer variable temp of type listNode
+3.set temp = front
+4.if temp is NULL
+	1.print "List empty"
+	2.return
+4.loop while temp is NOT NULL
+	1.print temp->data
+	2.temp = temp->link
+5.end loop
+6.end procedure

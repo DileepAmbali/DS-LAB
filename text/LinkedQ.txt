@@ -1,0 +1,56 @@
+Queue using Linked List Algorithm
+
+
+Operations on queue
+1.Push element    
+2.Pop element
+3.Display Queue
+
+
+define struct listNode
+	number data
+	self pointer link
+	
+declare pointer variables front=NULL and rear==NULL
+
+
+procedure push: val
+1.Start
+2.Queue node = createNode(val)
+3.if front == NULL
+	1.set front = node
+	2.set rear = node
+4.else
+	1.set rear->link = node
+	2.set rear = node
+5.end if
+6.end procedure
+
+
+procedure pop
+1.Start
+2.if front == NULL
+	1.print "List empty"
+	2.return
+3.end if
+4.if front == rear
+	1.set front = NULL
+	2.set rear = NULL
+	3.return
+5.end if
+6.set front = front -> link
+7.end procedure
+
+
+procedure display
+1.Start
+2.if front == NULL
+	1.print "List empty"
+	2.return
+3.end if
+4.set temp = front
+5.while temp != NULL
+	1.print temp->data
+	2.set temp = temp->link
+6.end procedure
+

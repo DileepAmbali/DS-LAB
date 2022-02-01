@@ -1,0 +1,58 @@
+Algorithm
+
+Operations on polynomials
+1.  Create new polynomial
+2.  Multiply two polynomials
+3.  Display polynomials
+
+
+define struct polyNode with 3 members: float "coeff", int "exp", self referential pointer "link"
+
+declare 3 polyNode variable pointers: A,B and C. Initialize them to NULL
+
+
+procedure CreatePolynomial
+1.  Start
+2.  declare 2 integer variable num and exp and 1 float variable coeff
+3.  Read the number of terms in first polynomial, num
+4.  repeat num times
+        4.1. Read the coefficient and exponent of a term of the first polynomial
+        4.2. Create a node of polyNode with the input coefficient and exponents
+        4.3. Append the node to the end of list
+    End loop
+5.  Read the number of terms in second polynomial, num
+6.  repeat num times
+        6.1. Read the coefficient and exponent of a term of the first polynomial
+        6.2. Create a node of polyNode with the input coefficient and exponents
+        6.3. Append the node to the end of list
+    End loop
+7.  End procedure
+
+
+procedure MultiplyPolynomial
+1.  Start
+2.  declare 4 pointer valriables of type polyNode: tempA,tempB,tempC,node. Initialize tempA to A, tempB to B and tempC to C
+3.  Loop while tempA is not NULL
+    3.1 Loop while tempB is not NULL
+        i.  tempC = C
+        ii. Create a node of polyNode with data (tempA->coeff * tempB->coeff) and (tempA->exp + tempB->exp)
+        iii.Loop while tempC->link is not NULL, AND tempC->exp is not node->exp
+                tempC = tempC->link
+            End loop
+        iv. if tempC->exp = node->exp
+                tempC->coeff = tempC->coeff + node->coeff;
+            else
+                tempC->link = node;
+            End if
+        v. tempB = B
+        End loop
+    End loop
+4.  End procedure
+
+
+procedure displayPolynomials: polyNode *temp
+1.  Start
+2.  repeat while temp is not NULL
+    2.1 print coeff and exponent of each term
+    2.2 temp = temp->link
+3.End procedure

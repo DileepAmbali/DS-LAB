@@ -1,0 +1,49 @@
+String with linked list Algorithm
+
+Operations
+1.Convert string to doubly linked list
+2.Check if string palindrome or not
+
+define structure 'dllnode'
+	character data
+	self pointer next
+	self pointer prev
+
+
+declare global pointer variables front=NULL, rear=NULL of type 'dllnode'
+
+
+procedure convert: string
+1.Start
+2.char c = string[0]
+3.loop while c is not '\n'
+	1.set pointer node = createNode(c)
+	2.if front = NULL
+		1.set front = node
+		2.set rear = node
+	3.else
+		1.set rear->next = node
+		2.set node->prev = rear
+		3.set rear = node
+	4.end if
+4.end loop
+5.end process
+
+
+procedure checkPalindrome
+1.Start
+2.declare pointer variables temp1 = front and temp2 = rear of type listNode
+3.loop while temp1 is NOT temp2 AND temp1->prev is NOT temp2
+	1.if temp1->data is not temp2->data
+		1.print "Not palindrome"
+		2.return 
+	2.end if
+	3.set temp1 = temp1->next
+	4.set temp2 = temp2->prev
+4.end loop
+5.print "Is a palindrome"
+6.return 
+7.end procedure
+
+
+	
