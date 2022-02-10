@@ -1,0 +1,18 @@
+Deleting repeated elements from linked list
+Algorithm
+
+process removeDuplicates
+1.	Start
+2.	Declare a new node 'current' and initialize to 'first'
+3.	Declare a new node 'temp' and initialize to current;
+3.	while current->next is NOT NULL, loop
+	1.	temp = current ;
+	2.	while temp->next is NOT NULL, loop
+		1.	if temp->next->data = current->data
+			1.	temp->next = temp->next->next
+		2.	else temp->next->data
+			1.temp = temp->next
+		3.end if-else
+	3. current = current->next
+4.	end loop
+5.	end process
