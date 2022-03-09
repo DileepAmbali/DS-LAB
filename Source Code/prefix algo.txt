@@ -1,0 +1,29 @@
+1.reverse infix expression
+2.read expression left to right
+3.if number/var 
+	append to new char array
+4.if operation
+	1.if stack empty
+		push to stack
+	2. if stack not empty
+		peak stack
+			if stack empty
+				exit program
+			if precedence of char and peak is same
+				if association is L-R
+					push to stack
+				else 
+					pop stack
+					goto back to peak
+			else if precedence of char is more than peak
+				push to stack
+			else
+				pop stack
+				goto peak
+5.if open bracket 
+	push to stack
+6.if close bracket	
+	pop until open bracket is found 
+		if stack empty 
+			exit program
+7.empty stack

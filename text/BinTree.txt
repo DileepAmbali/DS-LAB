@@ -1,0 +1,68 @@
+Binary Search Tree
+
+global binary search tree node pointer "root"
+root = NULL
+
+
+
+procedure Insertion
+1. Start
+2. allocate memory for node n
+3. read n->data
+4. n->lchild == n->rchild = NULL
+5. if root==NULL   
+   1.  root = n
+6. else
+    1. cur = root
+    2. while curr !=NULL, loop
+        1. if n->data < current->data
+            1. pre = cur
+            2. cur = cur->lchild
+            3. if cur = NULL
+                1. pre->lchild = n
+                2. break
+        2. else
+            1. pre = cur
+            2. cur = cur->rchild
+            3. if cur = NULL
+                1. pre->rchild = n
+                2. break
+    3. end loop
+7.end procedure
+
+
+
+procedure Search
+1. Start
+2. read search key from user, key
+3. node curr = root
+4. while curr is NOT NULL
+    1. count = count +1;
+    2. if curr->data = key
+        1. print "Key found"
+        2. end procedure
+    3. if(key<curr->data)
+        1. curr = curr -> lchild
+    4. if(ley>curr->data)
+        1. curr = curr -> rchild
+5. if key not found
+    1. print key not found
+6. end procedure
+
+
+
+procedure inorder traversal: returns node r
+1. Start
+2. self call with args r->lchild
+3.prinf r->data
+4. self call with r->rchild
+5. stop procedure
+
+
+
+procedure delete
+1. Start
+2. Use a similar algorith to search to find the key
+3. Use a trail pointer which follows the current pointer 
+4. Use a similar algorithm to deleting node to delete an element
+5. stop procedure
