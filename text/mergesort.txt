@@ -1,0 +1,64 @@
+Q.31) Write a program in C to perform merge sort .
+
+ALGORITHM
+
+Step 1 : Start
+Step 2 : Declare an array named list[] with a limit of 50 elements.
+Step 3 : Input the size of the array.
+Step 4 : Input the elements of the array list.
+Step 5 : Call the function partition(list, 0, size - 1).
+
+Step 6 : To create a partition in the array,
+         Begin procedure partition(): int list[],int low,int high
+         6.1. Start
+         6.2. Declare a variable named mid.
+         6.3. if low < high  
+           
+                 Set mid = (low + high) / 2;
+                 Call function partition(list, low, mid).
+                 Call function partition(list, mid + 1, high).
+                 Call function mergeSort(list, low, mid, high).
+              End IF
+         6.4. End procedure
+         
+Step 7 : For the merge sort function
+         Begin procedure mergeSort(): int list[],int low,int mid,int high
+         7.1. Start
+         7.2. Declare variables i, mi, k, lo, temp[50] of type integer.
+         7.3. Assign lo = low
+         7.4. Assign i = low
+         7.5. Assign mi = mid + 1
+         7.6. while (lo <= mid) && (mi <= high)
+                    
+                      7.6.1. if list[lo] <= list[mi]        
+                                 temp[i] = list[lo];
+                                 lo++;
+                      7.6.2. else        
+                                 temp[i] = list[mi];
+                                 mi++;
+                             End IF
+                      7.6.3. Increment i.
+              end while loop
+
+         7.7. if lo > mid
+                 
+                    7.7.1. for (k = mi; k <= high; k++)        
+                                temp[i] = list[k];
+                                i++;
+                           End for        
+                 
+         7.8. else
+                 
+                    7.8.1. for (k = lo; k <= mid; k++)                             
+                                temp[i] = list[k];
+                                i++;
+                           End for
+        
+              End IF
+         7.9. for (k = low; k <= high; k++)
+                   list[k] = temp[k];
+         7.10. End Procedure
+         
+Step 8 : Stop  
+
+

@@ -1,0 +1,19 @@
+1.Start.
+2.Input an array named arr[] of size n from the user.
+3.Set the first element as minimum. 
+4.Compare minimum with the second element. If the second element is smaller than minimum, assign the second element as minimum.
+5.Use swap function for that:
+   a.for (i = 0; i < n-1; i++)
+   b.Find the minimum element in unsorted array
+   c.Set min to i.
+   d.for (j = i+1; j < n; j++)
+	if (arr[j] < arr[min])
+	 Assign min to j.
+   e.Swap the found minimum element with the first element
+      ie,swap(&arr[min], &arr[i])
+   f.End for loop.
+   g.End procedure.
+5.Compare minimum with the third element. Again, if the third element is smaller, then assign minimum to the third element otherwise do nothing.
+6.The process goes on until the last element.
+7.Then the sorted array is printed using Display procedure.
+8.Stop. 

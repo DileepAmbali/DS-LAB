@@ -1,0 +1,47 @@
+Q.30) Write a program in C to perform quicksort.
+
+ALGORITHM
+
+Step 1 : Start
+Step 2 : Declare an array named list[] with a limit of 50 elements.
+Step 3 : Input the size of the array.
+Step 4 : Input the elements of the array list.
+Step 5 : Call the function quicksort(list, 0, size - 1).
+
+Step 6 : To perform quicksort on the array,
+         Begin procedure quicksort(): int list[], int low, int high
+         6.1. Start
+         6.2. Declare pivot, i, j and temp.
+         6.3. if low < high
+                 
+                     pivot = low;
+                     i = low;
+                     j = high;
+                     6.3.1. while i < j 
+                                  
+                                     while list[i]<=list[pivot] && i<=high                                    
+                                           i++;
+                                     end while loop
+                                      
+                                     while list[j] > list[pivot] && j >= low            
+                                           j--;
+                                     end while loop    
+                                      
+                                     if i < j            
+                                        temp = list[i];
+                                        list[i] = list[j];
+                                        list[j] = temp; 
+                                     End IF     
+                                           
+                            End outer While loop
+                     6.3.2. temp = list[j];
+                     6.3.3. list[j] = list[pivot];
+                     6.3.4. list[pivot] = temp;
+                     6.3.5. Call function quicksort(list, low, j - 1);
+                     6.3.6. Call function quicksort(list, j + 1, high);
+              End IF
+         6.4. End procedure
+         
+Step 7 : Print the sorted array.
+Step 8 : Stop
+          
