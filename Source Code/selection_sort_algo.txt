@@ -1,0 +1,10 @@
+
+process selection sort: array(list), size of array (n)
+1. Start
+2. declare i //index of element in list
+3. for each i = 0 to n-1
+	1. for each element in list at index j =i to n-1
+		1. if element is the smallest in the sub array j to n-1
+			1. swap elment with element at index i
+4. display list
+5. stop

@@ -9,13 +9,12 @@ void swap(int *a, int *b)
 
 void insetionSort(int list[], int n)
 {
-	for (int i = 1; i < n; i++)
+	for (int i = 0; i < n - 1; i++)
 	{
-		int temp = i;
-		while (list[temp] < list[temp - 1] && temp > 0)
+		for (int j = i + 1; j > 0; j--)
 		{
-			swap(&list[temp], &list[temp - 1]);
-			temp--;
+			if (list[j] < list[j - 1])
+				swap(&list[j], &list[j - 1]);
 		}
 	}
 }
@@ -36,7 +35,7 @@ void main()
 	{
 		printf("%d ", list[i]);
 	}
-	printf("\nAfter selection sort: ");
+	printf("\nAfter Insertion sort: ");
 	insetionSort(list, n);
 	for (int i = 0; i < n; i++)
 	{

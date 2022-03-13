@@ -9,15 +9,17 @@ void swap(int *a, int *b)
 
 void selectionSort(int list[], int n)
 {
-	for (int i = 0; i < n; i++)
+	int small;
+	for (int i = 0; i < n - 1; i++)
 	{
-		int small = i;
+		small = i;
 		for (int j = i + 1; j < n; j++)
 		{
-			if (list[j] < list[i])
+			if (list[j] < list[small])
 				small = j;
 		}
-		swap(&list[i], &list[small]);
+		if (small != i)
+			swap(&list[i], &list[small]);
 	}
 }
 

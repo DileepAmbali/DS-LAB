@@ -45,7 +45,7 @@ void main()
 	{
 		printf("%d ", list[i]);
 	}
-	printf("\nAfter selection sort: ");
+	printf("\nAfter Quick sort: ");
 	quickSort(list, 0, n - 1);
 	for (int i = 0; i < n; i++)
 	{

@@ -108,5 +108,6 @@ void main()
 {
 	read();
 	disp();
+	printf("\nBreadth first traversal: ");
 	traverse(adj[1]);
 }

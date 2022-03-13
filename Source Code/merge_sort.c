@@ -76,7 +76,7 @@ void main()
 	{
 		printf("%d ", list[i]);
 	}
-	printf("\nAfter selection sort: ");
+	printf("\nAfter Merge sort: ");
 
 	mergeSort(list, 0, n - 1);
 

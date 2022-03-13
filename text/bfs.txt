@@ -1,0 +1,107 @@
+/* Q.27) Write a program in C to implement a graph using adjacency list and then traverse through the graph using BFS. */
+
+ALGORITHM
+
+Step 1 : Start
+Step 2 : Create a self referential structure vertex with data members as data of type integer and *next of type struct.
+Step 3 : Declare vertex adjList[MAX_SIZE], int queue[MAX_SIZE] and assign int isVisited[MAX_SIZE] = {0}. Input the number of vertices and edges in the graph as v and e.
+
+Step 4 : For creating a vertex,
+         Begin procedure vertex createItem(): int data
+         4.1. Dynamically allocate memory for newVertex using malloc.
+         4.2. Set newVertex->data = data
+         4.3. Set newVertex->next = NULL
+         4.4. return newVertex
+         4.5. End procedure
+
+Step 5 : To add edge,
+         Begin procedure addEdge():int v1,int v2
+         5.1. Start
+         5.2. if !adjList[v1]
+                 adjList[v1] = createItem(v2)
+         5.3. else
+                  vertex curr = adjList[v1]
+                  while curr->next
+                        curr = curr->next;
+                  End while
+                  curr->next = createItem(v2);
+              End IF
+         5.4. if !adjList[v2]
+                 adjList[v2] = createItem(v1)
+         5.5. else
+                  vertex curr = adjList[v2]
+                  while curr->next
+                        curr = curr->next;
+                  End while
+                  curr->next = createItem(v1);
+              End If
+         5.6. End procedure
+       
+Step 6 : Set front = -1 and  rear = -1
+
+Sep 7 : For inserting into queue,
+        Begin procedure enQueue(): int element
+        7.1. Start
+        7.2. if rear = (MAX_SIZE-1)
+	        print Queue is full
+	        return
+	
+	7.3. if front = -1
+	        front++;
+	7.4. queue[++rear] = element
+	7.5. End procedure
+
+Step 8 : For deleting element from queue,
+         Begin procedure deQueue() :
+         8.1. Start
+         8.2. if front = -1
+	          printf Queue empty
+		  return -1
+		  
+         8.3. int data = queue[front]
+         8.4. if front = rear
+	         front = -1
+	         rear = -1
+	 8.5. else
+	          if front = rear
+	              front = -1
+		      rear = -1
+                  else
+	              front++;
+	      End IF
+         8.6. return data;
+         8.7. End procedure
+         
+STep 9 : To check whether empty,
+         Begin procedure isEmpty():
+         9.1. Start
+         9.2. if front = -1
+                 return 1
+         9.3. return 0
+         9.4. End procedure
+         
+Step 10 : To perform Breadth First Search,
+          Begin procedure bfs(): int v
+          10.1. start
+          10.2. for (int i = 1;i<=v;i++)
+                   if !isVisited[i]
+                       Call enQueue(i)
+                       isVisited[i] = 1
+                       while !isEmpty()
+                            i = deQueue()
+                             print i
+                             vertex curr = adjList[i]
+                             while (curr)
+                                  if !isVisited[curr->data]
+                                      Call enQueue(curr->data)
+                                      isVisited[curr->data] = 1
+                                   End if
+                                   curr = curr->next;
+                             End while
+
+                       End outer while
+                     End If
+                 End for
+           10.3. End procedure
+
+Step 11 : Stop

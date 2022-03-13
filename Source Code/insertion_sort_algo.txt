@@ -1,0 +1,10 @@
+
+process insertion sort: array(list), array size(n)
+1. Start
+2. for each i from 0 to n-2
+	1. for each j from i+1 to 1	//decrementing loop
+		1. if(list[j]<list[j-1])
+			1. swap(list[j],list[j-1])
+		2. else
+			1. break
+

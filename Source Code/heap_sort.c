@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap(int *a, int *b)
 {
@@ -7,44 +8,40 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
-void maxHeapify(int list[], int n, int i)
+void maxHeapify(int list[], int n, int root)
 {
-	int large = i;
-	int l = 2 * i;
-	int r = (2 * i) + 1;
-	if (l <= n && list[l] > list[large])
-		large = l;
-	if (r <= n && list[r] > list[large])
-		large = r;
-	if (large != i)
+	int l = 2 * root;
+	int r = (2 * root) + 1;
+	int big = root;
+	if (l <= n && list[l] > list[big])
+		big = l;
+	if (r <= n && list[r] > list[big])
+		big = r;
+	if (big != root)
 	{
-		swap(&list[large], &list[i]);
-		maxHeapify(list, n, large);
-	}
-	printf("\n");
-	for (int i = 1; i <= n; i++)
-	{
-		printf("%d ", list[i]);
+		swap(&list[root], &list[big]);
+		maxHeapify(list, n, big);
 	}
 }
 
 void heapSort(int list[], int n)
 {
-	for (int i = n / 2; i >= 1; i--)
+
+	for (int i = (n / 2) + 1; i >= 1; i--)
 	{
 		maxHeapify(list, n, i);
 	}
-	for (int i = n; i >= 1; i--)
+	for (int i = n; i > 1; i--)
 	{
-		swap(&list[1], &list[i]);
-		maxHeapify(list, n, 1);
+		swap(&list[i], &list[1]);
+		maxHeapify(list, i - 1, 1);
 	}
 }
 
 void main()
 {
 	int n;
-	int list[10000];
+	int list[100000];
 	printf("How many elements int the list: ");
 	scanf("%d", &n);
 	printf("Enter %d numbers: \n", n);
@@ -57,8 +54,10 @@ void main()
 	{
 		printf("%d ", list[i]);
 	}
-	// sprintf("\nAfter selection sort: ");
+	printf("\nAfter Heap sort: ");
+
 	heapSort(list, n);
+
 	for (int i = 1; i <= n; i++)
 	{
 		printf("%d ", list[i]);
