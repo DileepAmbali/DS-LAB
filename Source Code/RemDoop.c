@@ -26,10 +26,10 @@ void main()
         scanf("%d", &data);
         createList(data);
     }
-    printf("Linked list before removing duplicates");
+    printf("Linked list before removing duplicates: ");
     display();
+    printf("Linked list after removing duplicates: ");
     remDoop();
-    printf("Linked list after removing duplicates");
     display();
 }
 
@@ -64,20 +64,28 @@ void deleteNode(Node *temp)
 
 void remDoop()
 {
-    Node *current, *temp;
+    Node *current, *temp, *trail;
     current = front;
-    while (current != rear)
+    while (current)
     {
-        temp = current;
-        while (temp->next != NULL)
+        if (!current->next)
         {
-            if ((temp->next)->data == current->data)
+            break;
+        }
+        trail = current;
+        temp = current->next;
+        while (temp)
+        {
+            if (temp->data == current->data)
             {
-                if ((temp->next)->next != NULL)
-                    temp->next = (temp->next)->next;
+                trail->next = temp->next;
+                temp = trail->next;
             }
             else
+            {
+                trail = temp;
                 temp = temp->next;
+            }
         }
         current = current->next;
     }

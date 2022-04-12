@@ -84,23 +84,24 @@ bool delete (int value)
     {
         if (temp1->data == value)
         {
-            temp2 = temp1->prev;
-            temp1 = temp1->next;
-            if (temp1 == NULL && temp2 == NULL)
+            if (front == rear)
             {
+                front = rear = NULL;
             }
-            else if (temp1 == NULL)
+            else if (temp1 == front)
             {
-                temp2->next = NULL;
+                front = temp1->next;
+                front->prev = NULL;
             }
-            else if (temp2 = NULL)
+            else if (temp1 == rear)
             {
-                temp1->prev = NULL;
+                rear == temp1->prev;
+                rear->next = NULL;
             }
             else
             {
-                temp1->prev = temp2;
-                temp2->next = temp1;
+                temp1->next->prev = temp1->prev;
+                temp1->prev->next = temp1->next;
             }
             return true;
         }

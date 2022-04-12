@@ -118,21 +118,16 @@ void display()
         printf("\nQueue is empty\n");
         return;
     }
+
     printf("\nQueue elements :\n");
     i = front;
-    if (front <= rear)
+
+    while (i != rear)
     {
-        while (i <= rear)
-            printf("%d ", deque_arr[i++]);
+        printf("%d ", deque_arr[i]);
+        i = (i + 1) % MAX;
     }
-    else
-    {
-        while (i <= MAX - 1)
-            printf("%d ", deque_arr[i++]);
-        i = 0;
-        while (i <= rear)
-            printf("%d ", deque_arr[i++]);
-    }
+    printf("%d ", deque_arr[i]);
     printf("\n");
 }
 

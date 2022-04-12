@@ -1,20 +1,26 @@
 #include <stdio.h>
 
-int linearSearch(int A[], int size, int search)
+int A[50], size;
+void linearSearch(int A[])
 {
+    int search;
+    printf("Enter the number to be searched for: ");
+    scanf("%d", &search);
+
     for (int i = 0; i < size; i++)
     {
         if (A[i] == search)
-            return i;
+        {
+            printf("The number %d was found at index %d", search, i);
+            return;
+        }
     }
-    return -1;
+    printf("The number %d was not found in the array!", search);
 }
 
-int main()
+void readData()
 {
-
-    int A[50], search, i, size, pos;
-
+    int i;
     printf("Enter the size of the array: ");
     scanf("%d", &size);
     printf("Enter %d elements: \n", size);
@@ -23,17 +29,10 @@ int main()
     {
         scanf("%d", &A[i]);
     }
+}
 
-    printf("Enter the number to be searched for: ");
-    scanf("%d", &search);
-
-    pos = linearSearch(A, size, search);
-
-    if (pos == -1)
-        printf("The number %d was not found in the array!", search);
-
-    else
-        printf("The number %d was found at index %d", search, pos);
-
-    return 0;
+int main()
+{
+    readData();
+    linearSearch(A);
 }

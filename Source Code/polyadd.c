@@ -22,8 +22,7 @@ int COMPARE(int a, int b)
 		return 0;
 
 	if (a < b)
-		;
-	return 1;
+		return 1;
 }
 
 void attach(float coeff, int exp)
@@ -40,8 +39,8 @@ void attach(float coeff, int exp)
 
 void polyIn(int *startA, int *startB, int *finishA, int *finishB)
 {
-	int n, i;
-	float temp;
+	int n, i, exp;
+	float coef;
 	*startA = avail;
 	printf("How many terms in first polynomial?: ");
 	scanf("%d", &n);
@@ -49,17 +48,15 @@ void polyIn(int *startA, int *startB, int *finishA, int *finishB)
 	for (i = 0; i < n; i++)
 	{
 		printf("Term %d Coefficient: ", i + 1);
-		scanf("%f", &temp);
-		if (temp == 0)
+		scanf("%f", &coef);
+		if (coef == 0)
 		{
 			printf("Power skipped!\n");
 			continue;
 		}
-		else
-			term[avail].coeff = temp;
 		printf("Term %d Exponent: ", i + 1);
-		scanf("%d", &term[avail].exp);
-		avail++;
+		scanf("%d", &exp);
+		attach(coef, exp);
 	}
 
 	*finishA = avail - 1;
@@ -70,17 +67,15 @@ void polyIn(int *startA, int *startB, int *finishA, int *finishB)
 	for (i = 0; i < n; i++)
 	{
 		printf("Term %d Coefficient: ", i + 1);
-		scanf("%f", &temp);
-		if (temp == 0)
+		scanf("%f", &coef);
+		if (coef == 0)
 		{
 			printf("Power skipped!\n");
 			continue;
 		}
-		else
-			term[avail].coeff = temp;
 		printf("Term %d Exponent: ", i + 1);
-		scanf("%d", &term[avail].exp);
-		avail++;
+		scanf("%d", &exp);
+		attach(coef, exp);
 	}
 	*finishB = avail - 1;
 }
@@ -128,6 +123,7 @@ void padd(int startA, int startB, int finishA, int finishB, int *startC, int *fi
 
 void disp(int start, int finish)
 {
+	printf("Sum of the two polynomials: ");
 	while (start <= finish)
 	{
 		printf("%.1fx^%d", term[start].coeff, term[start].exp);

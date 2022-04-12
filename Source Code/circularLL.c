@@ -85,31 +85,45 @@ void delete (int value)
         printList();
         return;
     }
-    struct list_node *temp = last;
-    struct list_node *temp2 = last->link;
 
-    do
+    struct list_node *temp = last->link;
+    struct list_node *trail = last;
+    if (temp == last)
     {
         if (temp->data == value)
         {
-            if (temp->link == temp)
-            {
-                last = NULL;
-            }
-            else
-            {
-                temp2->link = temp->link;
-                if (temp == last)
-                {
-                    last = temp2;
-                }
-            }
+            last = NULL;
             printf("The node %d was deleted!", value);
             return;
         }
-        temp2 = temp;
-        temp = temp->link;
-    } while (temp != last);
+        else
+        {
+            printf("That element could not be found in the list! Could not delete");
+        }
+    }
+    else if (last->data == value)
+    {
+        while (trail->link->data != value)
+        {
+            trail = trail->link;
+        }
+        trail->link = trail->link->link;
+        last = trail;
+    }
+    else
+    {
+        while (temp != last)
+        {
+            if (temp->data == value)
+            {
+                trail->link = temp->link;
+                printf("The node %d was deleted!", value);
+                return;
+            }
+            trail = temp;
+            temp = temp->link;
+        }
+    }
     printf("That element could not be found in the list! Could not delete");
 }
 

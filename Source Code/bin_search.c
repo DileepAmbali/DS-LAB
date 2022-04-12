@@ -1,46 +1,51 @@
 #include <stdio.h>
 
-int binarySearch(int A[], int size, int search, int low, int high)
+int A[20], size;
+
+void binarySearch()
 {
+    int search;
+    printf("Enter the number to be searched for: ");
+    scanf("%d", &search);
 
-    int mid = (high + low) / 2;
-
-    if (low == high)
-        return -1;
-
-    if (search == A[mid])
-        return mid;
-
-    if (search < A[mid])
-        return binarySearch(A, size, search, low, mid - 1);
-
-    else
-        return binarySearch(A, size, search, mid + 1, high);
+    int low = 0;
+    int high = size;
+    int mid;
+    while (low != size - 1 && high != 0)
+    {
+        mid = (high + low) / 2;
+        if (A[mid] == search)
+        {
+            printf("The number %d was found at index %d", search, mid);
+            return;
+        }
+        else if (A[mid] > search)
+        {
+            high = mid;
+        }
+        else if (A[mid] < search)
+        {
+            low = mid;
+        }
+    }
+    printf("The number %d was not found in the array!", search);
 }
 
-int main()
+void readData()
 {
-    int A[50], search, size, pos;
-
+    int i;
     printf("Enter the size of the array: ");
     scanf("%d", &size);
     printf("Enter %d elements: \n", size);
 
-    for (int i = 0; i < size; i++)
+    for (i = 0; i < size; i++)
     {
         scanf("%d", &A[i]);
     }
+}
 
-    printf("Enter the number to be searched for: ");
-    scanf("%d", &search);
-
-    pos = binarySearch(A, size, search, 0, size - 1);
-
-    if (pos == -1)
-        printf("The number %d was not found in the array!", search);
-
-    else
-        printf("The number %d was found at index %d", search, pos);
-
-    return 0;
+int main()
+{
+    readData();
+    binarySearch();
 }

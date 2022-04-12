@@ -23,21 +23,22 @@ void delete ()
 		return;
 	else
 	{
+		int temp;
 		int ptr, prioComp = prioQ[0][1];
-		int i, j;
+		int i;
 		for (i = 0; i <= rear; i++)
 		{
 			if (prioQ[i][1] > prioComp)
 				ptr = i;
 		}
-
-		for (i = ptr; i < rear; j++)
+		temp = prioQ[ptr][0];
+		for (i = ptr; i < rear; i++)
 		{
 			prioQ[i][0] = prioQ[i + 1][0];
 			prioQ[i][1] = prioQ[i + 1][1];
 		}
 		rear--;
-		printf("Element deleted!\n");
+		printf("%d deleted!\n\n", temp);
 	}
 }
 
@@ -81,7 +82,7 @@ int menu()
 		display();
 		break;
 	case 2:
-		printf("\n");
+
 		delete ();
 		display();
 		break;

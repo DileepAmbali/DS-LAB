@@ -39,7 +39,7 @@ void main()
 	{
 		printf("%d ", list[i]);
 	}
-	printf("\nAfter selection sort: ");
+	printf("\n\nAfter selection sort: ");
 
 	selectionSort(list, n);
 

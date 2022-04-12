@@ -45,18 +45,18 @@ void reverse()
         return;
     }
 
-    struct list_node *temp1 = NULL;
-    struct list_node *temp2 = first;
-    struct list_node *temp3 = NULL;
+    struct list_node *prev = NULL;
+    struct list_node *curr = first;
+    struct list_node *next = NULL;
 
-    while (temp2 != NULL)
+    while (curr != NULL)
     {
-        temp3 = temp2->link;
-        temp2->link = temp1;
-        temp1 = temp2;
-        temp2 = temp3;
+        next = curr->link;
+        curr->link = prev;
+        prev = curr;
+        curr = next;
     }
-    first = temp1;
+    first = prev;
 }
 
 void printList()
@@ -73,14 +73,21 @@ void printList()
 
 int main()
 {
-    insert(1);
-    insert(2);
-    insert(3);
-    insert(4);
+    int n, ele;
+    printf("Program to Reverse a Linked List\n");
+    printf("How many elements in the list: ");
+    scanf("%d", &n);
+    printf("Enter %d elements: \n", n);
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d: ", i + 1);
+        scanf("%d", &ele);
+        insert(ele);
+    }
     printf("\nInitial Linked list");
     printList();
     printf("\n\nAfter reversal");
-    reverse(); // Reversing the given linked list
+    reverse();
     printList();
 
     return 0;

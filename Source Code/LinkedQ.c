@@ -53,7 +53,7 @@ void display()
 {
     if (front == NULL)
     {
-        printf("\Queue is empty!\n");
+        printf("\nQueue is empty!\n");
         return;
     }
     struct node *temp;

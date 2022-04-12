@@ -86,12 +86,11 @@ void search()
 }
 void inorder(Node *r)
 {
-
     if (r != NULL)
     {
 
         inorder(r->lchild);
-        printf("<--> %d", r->data);
+        printf("%d ", r->data);
         inorder(r->rchild);
     }
 }
@@ -101,20 +100,18 @@ void preorder(Node *r)
     if (r != NULL)
     {
 
-        printf("<--> %d", r->data);
+        printf("%d ", r->data);
         preorder(r->lchild);
         preorder(r->rchild);
     }
 }
 void postorder(Node *r)
 {
-
     if (r != NULL)
     {
-
-        preorder(r->lchild);
-        preorder(r->rchild);
-        printf("<-->%d", r->data);
+        postorder(r->lchild);
+        postorder(r->rchild);
+        printf("%d ", r->data);
     }
 }
 
@@ -135,7 +132,7 @@ Node *childFinder(Node *r)
 
 void delete ()
 {
-    printf("Enter key to delete...");
+    printf("Enter key to delete: ");
     int d;
     scanf("%d", &d);
     Node *current = root;
@@ -165,7 +162,7 @@ void delete ()
         }
     }
     if (flag == 0)
-        printf("key not found..!!!");
+        printf("Key not found..!!!");
     else
     {
         if (current->lchild == NULL && current->rchild == NULL)

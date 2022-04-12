@@ -112,7 +112,6 @@ void sum(int sp1[][3], int sp2[][3], int spsum[][3])
 				spsum[cnt][1] = sp1[a][1];
 				spsum[cnt][2] = sp1[a][2];
 				cnt++;
-				;
 				a++;
 			}
 
@@ -142,9 +141,24 @@ void sum(int sp1[][3], int sp2[][3], int spsum[][3])
 			}
 		}
 	}
+	while (a <= sp1[0][2])
+	{
+		spsum[cnt][0] = sp1[a][0];
+		spsum[cnt][1] = sp1[a][1];
+		spsum[cnt][2] = sp1[a][2];
+		cnt++;
+		a++;
+	}
+	while (b <= sp2[0][2])
+	{
+		spsum[cnt][0] = sp2[b][0];
+		spsum[cnt][1] = sp2[b][1];
+		spsum[cnt][2] = sp2[b][2];
+		cnt++;
+		b++;
+	}
 	spsum[0][2] = cnt - 1;
 }
-
 int main()
 {
 	int mat1[20][20], mat2[20][20];
@@ -164,20 +178,20 @@ int main()
 	convSparse(mat1, r1, c1, tup1);
 	convSparse(mat2, r2, c2, tup2);
 
-	printf("\nMATRIX 1 in SPARSE FORM\n");
+	printf("\nMATRIX 1 in TUPPLE FORM\n");
 	sparseDisp(tup1);
 	printf("\n");
 
-	printf("MATRIX 2 in SPARSE FORM\n");
-	sparseDisp(tup1);
+	printf("MATRIX 2 in TUPPLE FORM\n");
+	sparseDisp(tup2);
 	printf("\n");
 
-	printf("TRANSPOSE OF SPARSE MATRIX 1\n");
+	printf("TRANSPOSE OF SPARSE MATRIX 1 in TUPPLE FORM\n");
 	transpose(tup1, trans1);
 	sparseDisp(trans1);
 	printf("\n");
 
-	printf("TRANSPOSE OF SPARSE MATRIX 2\n");
+	printf("TRANSPOSE OF SPARSE MATRIX 2 in TUPPLE FORM\n");
 	transpose(tup2, trans2);
 	sparseDisp(trans2);
 	printf("\n");
@@ -191,13 +205,13 @@ int main()
 		}
 		else
 		{
-			printf("SUM OF SPARSE MATRIX 1 AND 2\n");
+			printf("SUM OF SPARSE MATRIX 1 AND 2 in TUPPLE FORM\n");
 			sparseDisp(sum_tup);
 			printf("\n");
 		}
 	}
 	else
-		printf("Tough luck Buddy! Matrix size different!");
+		printf("Tough luck! Matrix size different!");
 	printf("\n");
 
 	return 0;

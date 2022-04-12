@@ -15,7 +15,7 @@ int hash(int n, int m)
 
 void insertIntoTable(int n)
 {
-	int index = hash(n, 11);
+	int index = hash(n, c11);
 	do
 	{
 		if (t[index].occupied == 0)
